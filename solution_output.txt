@@ -1,0 +1,74 @@
+======================================================================
+MARMARA UNIVERSITY — GÖZTEPE CAMPUS FIBER-OPTIC NETWORK
+Maximum Flow Analysis — Solution Output
+======================================================================
+
+  Source node  : data_center
+  Sink node    : super_sink (aggregates student_labs_A + student_labs_B)
+  Algorithm    : Edmonds-Karp (BFS-based Ford-Fulkerson)
+
+  *** MAXIMUM ACHIEVABLE THROUGHPUT : 13,000 Mbps ***
+
+======================================================================
+FLOW ALLOCATION PER DIRECTED EDGE  (flow / capacity in Mbps)
+======================================================================
+  data_center            → engineering              10000 / 10000  Mbps  (100.0%)  [SATURATED]
+  data_center            → library                      0 / 1000   Mbps  (  0.0%)  [available]
+  data_center            → rectorate                    0 / 1000   Mbps  (  0.0%)  [available]
+  data_center            → science_letters           3000 / 10000  Mbps  ( 30.0%)  [available]
+  engineering            → data_center                  0 / 10000  Mbps  (  0.0%)  [available]
+  engineering            → health_center                0 / 500    Mbps  (  0.0%)  [available]
+  engineering            → student_labs_A           10000 / 10000  Mbps  (100.0%)  [SATURATED]
+  engineering            → student_labs_B             500 / 10000  Mbps  (  5.0%)  [available]
+  health_center          → engineering                500 / 500    Mbps  (100.0%)  [SATURATED]
+  health_center          → science_letters              0 / 500    Mbps  (  0.0%)  [available]
+  health_center          → student_affairs              0 / 200    Mbps  (  0.0%)  [available]
+  library                → data_center                  0 / 1000   Mbps  (  0.0%)  [available]
+  library                → rectorate                    0 / 500    Mbps  (  0.0%)  [available]
+  library                → student_affairs              0 / 200    Mbps  (  0.0%)  [available]
+  rectorate              → data_center                  0 / 1000   Mbps  (  0.0%)  [available]
+  rectorate              → library                      0 / 500    Mbps  (  0.0%)  [available]
+  rectorate              → student_affairs              0 / 500    Mbps  (  0.0%)  [available]
+  science_letters        → data_center                  0 / 10000  Mbps  (  0.0%)  [available]
+  science_letters        → health_center              500 / 500    Mbps  (100.0%)  [SATURATED]
+  science_letters        → student_labs_A            2500 / 2500   Mbps  (100.0%)  [SATURATED]
+  student_affairs        → health_center                0 / 200    Mbps  (  0.0%)  [available]
+  student_affairs        → library                      0 / 200    Mbps  (  0.0%)  [available]
+  student_affairs        → rectorate                    0 / 500    Mbps  (  0.0%)  [available]
+  student_labs_A         → engineering                  0 / 10000  Mbps  (  0.0%)  [available]
+  student_labs_A         → science_letters              0 / 2500   Mbps  (  0.0%)  [available]
+  student_labs_A         → student_labs_B               0 / 2500   Mbps  (  0.0%)  [available]
+  student_labs_B         → engineering                  0 / 10000  Mbps  (  0.0%)  [available]
+  student_labs_B         → student_labs_A               0 / 2500   Mbps  (  0.0%)  [available]
+
+======================================================================
+MINIMUM CUT — BOTTLENECK IDENTIFICATION
+======================================================================
+  Min-cut value : 13,000 Mbps  (= max flow, by theorem)
+
+  Source-side nodes  (upgrade these links to increase throughput):
+    • data_center
+    • health_center
+    • library
+    • rectorate
+    • science_letters
+    • student_affairs
+
+  Sink-side nodes:
+    • engineering
+    • student_labs_A
+    • student_labs_B
+
+  Bottleneck edges (crossing the min-cut):
+    ✦ health_center  →  engineering   (capacity: 500 Mbps)
+    ✦ science_letters  →  student_labs_A   (capacity: 2,500 Mbps)
+    ✦ data_center  →  engineering   (capacity: 10,000 Mbps)
+
+======================================================================
+MANAGERIAL RECOMMENDATION
+======================================================================
+  Upgrading the bottleneck link(s) identified above will directly
+  increase the maximum deliverable throughput to student labs.
+  Priority 1: Saturated edges crossing the min-cut.
+  Priority 2: Links with utilisation > 80% (pre-bottleneck risk).
+======================================================================

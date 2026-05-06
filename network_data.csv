@@ -1,0 +1,15 @@
+source,target,capacity_mbps,distance_m,cable_cost_tl,node_type_source,node_type_target
+data_center,rectorate,1000,420,63000,core,admin
+data_center,engineering,10000,380,57000,core,faculty
+data_center,science_letters,10000,510,76500,core,faculty
+data_center,library,1000,290,43500,core,service
+rectorate,student_affairs,500,180,27000,admin,admin
+rectorate,library,500,230,34500,admin,service
+engineering,student_labs_A,10000,150,22500,faculty,lab
+engineering,student_labs_B,10000,210,31500,faculty,lab
+science_letters,student_labs_A,2500,200,30000,faculty,lab
+science_letters,health_center,500,350,52500,faculty,service
+library,student_affairs,200,160,24000,service,admin
+student_labs_A,student_labs_B,2500,120,18000,lab,lab
+health_center,student_affairs,200,400,60000,service,admin
+engineering,health_center,500,480,72000,faculty,service
